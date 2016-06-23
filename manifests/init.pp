@@ -17,6 +17,10 @@ class artifactory_pro(
   String $service_name     = $::artifactory_pro::params::service_name,
   String $plugins_dir      = $::artifactory_pro::params::plugins_dir,
 ) inherits ::artifactory_pro::params {
+  contain ::artifactory_pro::yum
+  contain ::artifactory_pro::install
+  contain ::artifactory_pro::config
+  contain ::artifactory_pro::service
 
   class { '::artifactory_pro::yum': }     ->
   class { '::artifactory_pro::install': } ->
