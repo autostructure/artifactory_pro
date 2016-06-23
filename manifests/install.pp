@@ -1,10 +1,9 @@
-# == Class artifactory_pro::install
+# == Class artifactory::install
 #
-# This class is called from artifactory_pro for install.
+# This class is called from artifactory for install.
 #
 class artifactory_pro::install {
-
-  package { $::artifactory_pro::package_name:
-    ensure => present,
+  package { $::artifactory::package_name:
+    ensure  => present,
   }
 }
