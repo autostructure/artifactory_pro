@@ -3,7 +3,7 @@
 # This class is called from artifactory for install.
 #
 class artifactory_pro::install {
-  package { $::artifactory::package_name:
+  package { $::artifactory_pro::package_name:
     ensure  => present,
   }
 }
