@@ -10,7 +10,7 @@
       Optional[String]                               $binary_provider_cache_dir      = undef
 | -%>
 <%-
-$db_driver = $type ? {
+$db_driver = $db_type ? {
     'mssql'      => 'com.microsoft.sqlserver.jdbc.SQLServerDriver',
     'mysql'      => 'com.mysql.jdbc.Driver',
     'oracle'     => 'oracle.jdbc.OracleDriver',
@@ -40,7 +40,7 @@ $db_driver = $type ? {
 
 type=<%= $db_type %>
 driver=<%= $db_driver %>
-url=<$= $db_url %>
+url=<%= $db_url %>
 username=<%= $db_username %>
 password=<%= $db_password %>
 
