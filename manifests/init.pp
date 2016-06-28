@@ -32,7 +32,7 @@ class artifactory_pro(
   contain ::artifactory_pro::config
   contain ::artifactory_pro::service
 
-Class['::artifactory_pro::yum']     ->
+  Class['::artifactory_pro::yum']     ->
   Class['::artifactory_pro::install'] ->
   Class['::artifactory_pro::config']  ~>
   Class['::artifactory_pro::service']
