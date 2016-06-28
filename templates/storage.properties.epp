@@ -1,7 +1,7 @@
 <%- | Enum['mssql', 'mysql', 'oracle', 'postgresql'] $db_type,
-      String                                         $url,
-      String                                         $username,
-      String                                         $password,
+      String                                         $db_url,
+      String                                         $db_username,
+      String                                         $db_password,
       Enum['filesystem', 'fullDb','cachedFS']        $binary_provider_type           = 'filesystem',
       Optional[Integer]                              $pool_max_active                = undef,
       Optional[Integer]                              $pool_max_idle                  = undef,
@@ -40,9 +40,9 @@ $db_driver = $type ? {
 
 type=<%= $db_type %>
 driver=<%= $db_driver %>
-url=<$= $url %>
-username=<%= $username %>
-password=<%= $password %>
+url=<$= $db_url %>
+username=<%= $db_username %>
+password=<%= $db_password %>
 
 ## Determines where the actual artifacts binaries are stored. Available options:
 ## filesystem - binaries are stored in the filesystem (recommended, default)
