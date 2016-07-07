@@ -28,7 +28,22 @@ class artifactory_pro(
   Optional[String] $binary_provider_cache_dir                             = undef,
 ) {
 
-  class{'::artifactory': }             ->
+  class{'::artifactory':
+    license_key                    => $license_key,
+    yum_name                       => $yum_name,
+    yum_baseurl                    => $yum_baseurl,
+    db_type                        => $db_type,
+    db_port                        => $db_port,
+    db_hostname                    => $db_hostname,
+    db_username                    => $db_username,
+    db_password                    => $db_password,
+    binary_provider_type           => $binary_provider_type,
+    pool_max_active                => $pool_max_active,
+    pool_max_idle                  => $pool_max_idle,
+    binary_provider_cache_maxSize  => $binary_provider_cache_maxSize,
+    binary_provider_filesystem_dir => $binary_provider_filesystem_dir,
+    binary_provider_cache_dir      => $binary_provider_cache_dir,
+  }             ->
   class{'::artifactory_pro::config': } ~>
   Class['::artifactory::service']
 }
