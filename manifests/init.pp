@@ -13,7 +13,7 @@
 
 class artifactory_pro(
   String $license_key,
-  String $yum_name                                                        = 'bintray--jfrog-artifactory-pro-rpms',
+  String $yum_name                                                        = 'bintray-jfrog-artifactory-pro-rpms',
   String $yum_baseurl                                                     = 'http://jfrog.bintray.com/artifactory-pro-rpms',
   String $package_name                                                    = 'jfrog-artifactory-pro',
   Optional[Enum['mssql', 'mysql', 'oracle', 'postgresql']] $db_type       = undef,
