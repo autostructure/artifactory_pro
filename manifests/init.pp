@@ -29,7 +29,6 @@ class artifactory_pro(
 ) {
 
   class{'::artifactory':
-    license_key                    => $license_key,
     yum_name                       => $yum_name,
     yum_baseurl                    => $yum_baseurl,
     db_type                        => $db_type,
