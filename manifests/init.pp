@@ -27,10 +27,8 @@ class artifactory_pro(
   Optional[String] $binary_provider_filesystem_dir                        = undef,
   Optional[String] $binary_provider_cache_dir                             = undef,
 ) {
-  include ::artifactory
-  include ::artifactory_pro::config
 
-  Class['::artifactory'] ->
-  Class['::artifactory_pro::config']  ~>
+  class{'::artifactory': }             ->
+  class{'::artifactory_pro::config': } ~>
   Class['::artifactory::service']
 }
