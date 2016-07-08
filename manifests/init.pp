@@ -47,4 +47,6 @@ class artifactory_pro(
   }             ->
   class{'::artifactory_pro::config': } ~>
   Class['::artifactory::service']
+
+  contain ::artifactory
 }
