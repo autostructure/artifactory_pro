@@ -15,9 +15,7 @@ define artifactory_pro::plugin(
 
   ::wget::fetch { $url:
     destination => "${::artifactory::artifactory_home}/etc/plugins/${file_name}",
-  }
-
-  file { "${::artifactory::artifactory_home}/etc/plugins/${file_name}":
-    ensure => file,
+    execuser    => 'artifactory',
+    mode        => 'a+rx',
   }
 }
