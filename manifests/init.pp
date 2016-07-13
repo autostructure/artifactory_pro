@@ -28,6 +28,7 @@ class artifactory_pro(
   Optional[Integer] $binary_provider_cache_maxSize                        = undef,
   Optional[String] $binary_provider_filesystem_dir                        = undef,
   Optional[String] $binary_provider_cache_dir                             = undef,
+  Optional[Hash] $plugin_urls                                             = undef,
 ) {
 
   class{'::artifactory':
@@ -47,8 +48,12 @@ class artifactory_pro(
     binary_provider_cache_dir      => $binary_provider_cache_dir,
     jdbc_driver_url                => $jdbc_driver_url,
   }             ->
-  class{'::artifactory_pro::config': } ~>
+  class{'::artifactory_pro::config': } ->
+  class{'::artifactory_pro::post_config': }
+
+  Class['::artifactory_pro::config'] ~>
   Class['::artifactory::service']
 
-  contain ::artifactory
+  Class['::artifactory_pro::post_config'] ~>
+  Class['::artifactory::service']
 }

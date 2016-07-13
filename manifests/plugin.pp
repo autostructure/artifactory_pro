@@ -17,5 +17,8 @@ define artifactory_pro::plugin(
     destination => "${::artifactory::artifactory_home}/etc/plugins/${file_name}",
     execuser    => 'artifactory',
     mode        => 'a+rx',
+  } ->
+  file {"${::artifactory::artifactory_home}/etc/plugins/${file_name}":
+    ensure => file,
   }
 }
