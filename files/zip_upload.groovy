@@ -58,7 +58,7 @@ executions {
     File tempFile = File.createTempFile("zip_archive", ".zip")
 
     // Zip field that stores uid/gid information
-		public final ZipShort UNIX_FIELD = new ZipShort(0x7875);
+		ZipShort UNIX_FIELD = new ZipShort(0x7875);
 
     // Output stream to the file
     BufferedOutputStream zipOutput = new BufferedOutputStream(new FileOutputStream(tempFile))
