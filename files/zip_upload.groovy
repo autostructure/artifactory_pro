@@ -11,9 +11,11 @@ import org.artifactory.repo.RepoPath
 import org.artifactory.repo.RepoPathFactory
 import groovyx.net.http.RESTClient
 
-import org.apache.commons.compress.archivers.zip.ZipFile
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream
+import org.apache.commons.compress.archivers.zip.ZipExtraField;
+import org.apache.commons.compress.archivers.zip.ZipFile;
+import org.apache.commons.compress.archivers.zip.ZipShort;
 
 import org.artifactory.resource.ResourceStreamHandle
 
