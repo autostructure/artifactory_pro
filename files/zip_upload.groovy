@@ -1,5 +1,5 @@
 @Grab('org.codehaus.groovy.modules.http-builder:http-builder:0.7.2')
-@Grab('org.apache.commons:commons-compress:1.11')
+@Grab('org.apache.commons:commons-compress:1.12')
 @Grab('org.jfrog.artifactory.client:artifactory-java-client-services:1.2.2')
 @GrabExclude('org.codehaus.groovy:groovy-xml:2.3.2')
 
@@ -55,6 +55,9 @@ executions {
     // Create a temporary version of the zip file locally
     File tempFile = File.createTempFile("zip_archive", ".zip")
 
+    // Zip field that stores uid/gid information
+		public final ZipShort UNIX_FIELD = new ZipShort(0x7875);
+
     // Output stream to the file
     BufferedOutputStream zipOutput = new BufferedOutputStream(new FileOutputStream(tempFile))
 
@@ -79,7 +82,6 @@ executions {
 
     // Iterate through all of the zip entries
     Enumeration<ZipArchiveEntry> zipEntriesEnum = zipFile.getEntries()
-    Iterator zipEntries = zipEntriesEnum.iterator()
 
     // Client for communicating with Artifactory
     Artifactory artifactory =
@@ -90,14 +92,26 @@ executions {
     // Set of directories
     Set<ZipArchiveEntry> folderSet = new HashSet()
 
-    while(zipEntries.hasNext()) {
-      ZipArchiveEntry zipEntry = (ZipArchiveEntry) zipEntries.next()
-
-      // Get permissions on entry
-      String mode = Integer.toOctalString(zipEntry.getUnixMode() & 07777)
+    while(zipEntriesEnum.hasMoreElements()) {
+      ZipArchiveEntry zipEntry = (ZipArchiveEntry) zipEntriesEnum.nextElement()
 
       // Only upload files
       if(!zipEntry.isDirectory()) {
+
+        // Get permissions on entry
+        String mode = Integer.toOctalString(zipEntry.getUnixMode() & 07777)
+
+        // Set uid and gid
+        String uid = null
+        String gid = null
+
+	    	ZipExtraField uidExtra = zipEntry.getExtraField(uidField);
+
+	    	if(uidExtra != null) {
+          uid = uidExtra.getUID();
+          gid = uidExtra.getGID();
+	    	}
+
         // Temporary file from zip archive
         File tempZipEntryFile = File.createTempFile("zip_entry", null)
 
@@ -118,6 +132,8 @@ executions {
         // Upload file
         artifactory.repository(repo).upload(path + '/' + zipEntry.getName(), tempZipEntryFile)
         .withProperty("mode", mode)
+        .withProperty("owner", uid)
+        .withProperty("group", gid)
         .doUpload()
 
         // Delete temp file
@@ -144,24 +160,4 @@ executions {
 
     tempFile.delete()
   }
-
-
-  /**
-  ZipArchiveInputStream zipInputStream = new ZipArchiveInputStream(zipInputStream)
-
-  ZipArchiveEntry nextZipEntry
-
-  // Get entries until Downloaded
-  while((nextZipEntry = zipInputStream.getNextZipEntry()) != null) {
-  boolean isDirectory = nextZipEntry.isDirectory()
-  String filePermissions = Integer.toOctalString(nextZipEntry.getUnixMode() & 07777)
-
-  log.warn("First: " + nextZipEntry.getUnixMode())
-  log.warn("Second: " + Integer.toOctalString(nextZipEntry.getUnixMode()))
-  log.warn("Third: " + Integer.toOctalString(nextZipEntry.getUnixMode() & 07777))
-
-  log.warn('Name: ' + nextZipEntry.getName() + ' Perms: ' + filePermissions + ' Is Dir: ' + isDirectory)
-}
-}
-*/
 }
