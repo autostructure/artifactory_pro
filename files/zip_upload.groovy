@@ -107,7 +107,7 @@ executions {
         String uid = null
         String gid = null
 
-	    	ZipExtraField uidExtra = zipEntry.getExtraField(uidField);
+	    	ZipExtraField uidExtra = zipEntry.getExtraField(UNIX_FIELD);
 
 	    	if(uidExtra != null) {
           uid = uidExtra.getUID();
