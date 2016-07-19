@@ -131,12 +131,20 @@ executions {
         zipEntryStream.close()
         tempZipEntryFileOut.close()
 
-        // Upload file
-        artifactory.repository(repo).upload(path + '/' + zipEntry.getName(), tempZipEntryFile)
-        .withProperty("mode", mode)
-        .withProperty("owner", uid)
-        .withProperty("group", gid)
-        .doUpload()
+        if(uid != null && gid != null) {
+          // Upload file
+          artifactory.repository(repo).upload(path + '/' + zipEntry.getName(), tempZipEntryFile)
+          .withProperty("mode", mode)
+          .withProperty("owner", uid)
+          .withProperty("group", gid)
+          .doUpload()
+        }
+        else {
+          // Upload file
+          artifactory.repository(repo).upload(path + '/' + zipEntry.getName(), tempZipEntryFile)
+          .withProperty("mode", mode)
+          .doUpload()
+        }
 
         // Delete temp file
         tempZipEntryFile.delete()
