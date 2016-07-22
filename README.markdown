@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/autostructure/artifactory_pro.svg?branch=master)](https://travis-ci.org/autostructure/artifactory_pro)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/autostructure/artifactory_pro.svg)](https://forge.puppetlabs.com/autostructure/artifactory_pro)
+[![Puppet Forge](https://img.shields.io/puppetforge/f/autostructure/artifactory_pro.svg)](https://forge.puppetlabs.com/autostructure/artifactory_pro)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -11,6 +15,14 @@
 6. [Development - Guide for contributing to the module](#development)
 
 ## Overview
+
+This ONLY install Artifactory Pro.
+
+If you are looking for the commercial installation look at:
+
+Artifactory OSS: https://forge.puppet.com/autostructure/artifactory
+
+Artifactory HA: https://forge.puppet.com/autostructure/artifactory_ha
 
 Github and gitlab are great for storing source control, but bad at storing installers and compiled packages.
 

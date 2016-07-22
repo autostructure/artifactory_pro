@@ -1,6 +1,6 @@
 {
   "name": "autostructure-artifactory_pro",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Bryan Belanger",
   "summary": "Installs Artifactory Pro. Not HA configuration.",
   "license": "Apache-2.0",
@@ -22,6 +22,13 @@
     }
   ],
   "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
