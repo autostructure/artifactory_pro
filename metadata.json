@@ -1,6 +1,6 @@
 {
   "name": "autostructure-artifactory_pro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Bryan Belanger",
   "summary": "Installs Artifactory Pro. Not HA configuration.",
   "license": "Apache-2.0",
@@ -8,6 +8,10 @@
   "project_page": "https://github.com/autostructure/artifactory_pro",
   "issues_url": "https://github.com/autostructure/artifactory_pro/issues",
   "dependencies": [
+    {
+      "name": "maestrodev-wget",
+      "version_requirement": ">= 1.4.0"
+    },
     {
       "name": "puppetlabs-stdlib",
       "version_requirement": ">= 4.0.0"

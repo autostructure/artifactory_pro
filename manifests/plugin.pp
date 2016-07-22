@@ -12,9 +12,10 @@ define artifactory_pro::plugin(
   }
 
   $file_name =  regsubst($url, '.+\/([^\/]+)$', '\1')
-  
+
   file {"${::artifactory::artifactory_home}/etc/plugins/${file_name}":
     ensure => file,
     source => $url,
+    notify => Class['::artifactory::service'],
   }
 }
