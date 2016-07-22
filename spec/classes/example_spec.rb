@@ -10,7 +10,7 @@ describe 'artifactory_pro' do
           facts
         end
 
-        context "artifactory_pro class without any parameters" do
+        context "artifactory_pro class with simple license key" do
           it { is_expected.to compile.with_all_deps }
 
           #it { is_expected.to contain_class('artifactory_pro::params') }
