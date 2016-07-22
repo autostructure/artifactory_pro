@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'artifactory_pro' do
+  let(:params) { {:license_key => 'my_license_key'} }
+
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
