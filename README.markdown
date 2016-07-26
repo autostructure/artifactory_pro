@@ -36,10 +36,6 @@ The Artifactory Pro module manages both the installation and database configurat
 
 ## Setup
 
-### Setup Requirements **OPTIONAL**
-
-Requires a JDK to be installed.
-
 ### Beginning with artifactory
 
 Artifactory pro requires at a minimum a license key
@@ -57,8 +53,7 @@ class { '::artifactory_pro':
   license_key                    => 'abc123',
   jdbc_driver_url                => 'puppet://modules/my_module/mysql.jar',
   db_type                        => 'mysql',
-  db_port                        => 3306,
-  db_hostname                    => 'mysqldb.evilcorp.com',
+  db_url                         => 'jdbc:oracle:thin:@somedomain.com:1521:arti001',
   db_username                    => 'my_username',
   db_password                    => 'efw23gn2j3',
   binary_provider_type           => 'filesystem',
@@ -137,13 +132,9 @@ This is required if using a new data source.
 
 Only required for database configuration. The type of database to configure for. Valid values are 'mssql', 'mysql', 'oracle', 'postgresql'.
 
-##### `db_hostname`
+##### `db_url`
 
-Only required for database configuration. The hostname of the database.
-
-##### `db_port`
-
-Only required for database configuration. The port of the database.
+Only required for database configuration. The url of the database.
 
 ##### `db_username`
 

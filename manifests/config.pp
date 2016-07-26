@@ -14,11 +14,6 @@ class artifactory_pro::config {
     ensure  => directory,
   }
 
-  ### TODO: Put back notify #notify  => Service['artifactory'],
-  #file { "${::artifactory::plugins_dir}/zip_upload.groovy":
-  #  source  => 'puppet:///modules/artifactory/zip_upload.groovy',
-  #}
-
   # Add the license file
   file { "${::artifactory::artifactory_home}/etc/artifactory.lic":
     ensure  => file,
