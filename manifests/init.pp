@@ -41,7 +41,7 @@ class artifactory_pro(
     binary_provider_type           => $binary_provider_type,
     pool_max_active                => $pool_max_active,
     pool_max_idle                  => $pool_max_idle,
-    binary_provider_cache_maxSize  => $binary_provider_cache_maxsize,
+    binary_provider_cache_maxsize  => $binary_provider_cache_maxsize,
     binary_provider_filesystem_dir => $binary_provider_filesystem_dir,
     binary_provider_cache_dir      => $binary_provider_cache_dir,
     jdbc_driver_url                => $jdbc_driver_url,
