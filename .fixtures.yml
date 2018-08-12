@@ -3,6 +3,6 @@ fixtures:
     stdlib:      "puppetlabs/stdlib"
     artifactory: "autostructure/artifactory"
     java:        "puppetlabs/java"
-    wget:        "maestrodev/wget"
+    wget:        "puppet/wget"
   symlinks:
     artifactory_pro: "#{source_dir}"
