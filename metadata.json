@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "autostructure-artifactory",
-      "version_requirement": ">= 2.0.9"
+      "version_requirement": ">= 2.0.9 <= 2.0.14"
     }
   ],
   "operatingsystem_support": [
