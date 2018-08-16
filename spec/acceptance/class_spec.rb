@@ -15,11 +15,11 @@ describe 'artifactory_pro class' do
       apply_manifest(pp, catch_changes: true)
     end
 
-    describe package('artifactory_pro') do
+    describe package('jfrog-artifactory-pro') do
       it { is_expected.to be_installed }
     end
 
-    describe service('artifactory_pro') do
+    describe service('artifactory') do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
