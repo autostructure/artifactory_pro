@@ -28,11 +28,13 @@ class artifactory_pro(
   Optional[Integer] $binary_provider_cache_maxsize                        = undef,
   Optional[String] $binary_provider_filesystem_dir                        = undef,
   Optional[String] $binary_provider_cache_dir                             = undef,
+  Optional[Boolean] $manage_repo                                          = undef,
   Hash $plugin_urls                                                       = {},
 ) {
 
   class{'::artifactory':
     manage_java                    => $manage_java,
+    manage_repo                    => $manage_repo,
     yum_name                       => $yum_name,
     yum_baseurl                    => $yum_baseurl,
     package_name                   => $package_name,
