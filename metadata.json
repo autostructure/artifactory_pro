@@ -1,6 +1,6 @@
 {
   "name": "autostructure-artifactory_pro",
-  "version": "2.0.7",
+  "version": "2.1.0",
   "author": "Bryan Belanger",
   "summary": "Installs Artifactory Pro. Not HA configuration.",
   "license": "Apache-2.0",
@@ -10,7 +10,23 @@
   "dependencies": [
     {
       "name": "autostructure-artifactory",
-      "version_requirement": ">= 2.0.9 <= 2.0.15"
+      "version_requirement": ">= 2.1.0 <= 2.2.0"
+    },
+    {
+      "name": "puppetlabs-yumrepo_core",
+      "version_requirement": ">= 1.0.0 <= 2.0.0"
+    },
+    {
+      "name": "puppetlabs-mysql",
+      "version_requirement": ">= 8.0.0 <= 9.0.0"
+    },
+    {
+      "name": "puppetlabs-java",
+      "version_requirement": ">= 1.5.0 <= 3.0.0"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.0.0 < 6.0.0"
     }
   ],
   "operatingsystem_support": [
@@ -42,7 +58,7 @@
       "version_requirement": ">= 4.7.0 < 6.0.0"
     }
   ],
-  "pdk-version": "1.6.1",
+  "pdk-version": "1.9.1",
   "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
-  "template-ref": "1.6.1-0-g6b0d497"
+  "template-ref": "1.9.1-0-g6945d31"
 }
